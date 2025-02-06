@@ -2,6 +2,8 @@
 import React, { useState, useMemo } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { SequenceAnalysisTools } from './SequenceAnalysisTools';
 
 // Type definitions
 type InputType = 'dna' | 'rna';
@@ -86,14 +88,6 @@ const DNATranslator: React.FC = () => {
     'BRCA1 Mutation Site': {
       seq: 'ATGCTGAGTTTGTGTGTGAACGGACACTG',
       desc: 'Common mutation region in breast cancer gene'
-    },
-    'p53 Hot Spot': {
-      seq: 'ATGGGCGGCATGAACCGGAGGCCCATCCTC',
-      desc: 'Frequently mutated region in p53 tumor suppressor'
-    },
-    'Hemoglobin Beta': {
-      seq: 'ATGGTGCACCTGACTCCTGAGGAGAAGTCT',
-      desc: 'Start of beta-globin - mutations cause sickle cell anemia'
     }
   };
 
@@ -109,7 +103,6 @@ const DNATranslator: React.FC = () => {
 
   const processSequence = (sequence: string, readingFrame: number = 0): ProcessedCodon[] => {
     const rnaSeq = inputType === 'dna' ? transcribe(sequence) : sequence;
-    // Apply reading frame offset
     const offsetSeq = rnaSeq.slice(readingFrame);
     const codons = offsetSeq.match(/.{1,3}/g) || [];
     
@@ -127,11 +120,9 @@ const DNATranslator: React.FC = () => {
     const rnaSeq = inputType === 'dna' ? transcribe(sequence) : sequence;
     const codons = rnaSeq.match(/.{1,3}/g) || [];
     
-    // Calculate GC content
     const gcCount = (rnaSeq.match(/[GC]/g) || []).length;
     const gcContent = ((gcCount / rnaSeq.length) * 100).toFixed(1);
     
-    // Count codon types
     const codonCounts: { [key: string]: number } = {};
     codons.forEach(codon => {
       if (codonTable[codon]) {
@@ -212,7 +203,7 @@ const DNATranslator: React.FC = () => {
                   const selected = sampleSequences[e.target.value];
                   if (selected) {
                     setInput(selected.seq);
-                    setInputType('dna'); // Reset to DNA for samples
+                    setInputType('dna');
                   }
                 }}
               >
@@ -305,6 +296,15 @@ const DNATranslator: React.FC = () => {
                   </div>
                 ))}
               </div>
+            </div>
+
+            {/* Advanced Analysis Tools */}
+            <div className="mt-6">
+              <h3 className="text-lg font-medium mb-4">Advanced Sequence Analysis</h3>
+              <SequenceAnalysisTools
+                sequence={input}
+                processedSequence={processedSequence}
+              />
             </div>
           </div>
 
