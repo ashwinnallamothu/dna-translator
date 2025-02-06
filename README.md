@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DNA/RNA to Protein Translator
+
+An interactive web application for translating DNA/RNA sequences to proteins with real-time visualization and analysis features.
+
+## Features
+
+- **DNA/RNA Translation**: Convert DNA sequences to RNA and then to amino acid sequences
+- **Bidirectional Input**: Accept both DNA and RNA input sequences
+- **Reading Frame Selection**: Analyze sequences in all three reading frames
+- **Color-Coded Visualization**: Track codons and their corresponding amino acids
+- **Multiple Notation Systems**: Switch between one-letter and three-letter amino acid codes
+- **Sequence Analysis**: GC content calculation and sequence statistics
+- **Sample Sequences**: Pre-loaded with biologically relevant sequences
+
+## Built With
+
+- React
+- Vite
+- Tailwind CSS
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js (v14 or higher)
+- npm
+
+### Installation
+
+1. Clone the repository
+   ```sh
+   git clone https://github.com/your-username/dna-translator.git
+   ```
+
+2. Install NPM packages
+   ```sh
+   cd dna-translator
+   npm install
+   ```
+
+3. Start the development server
+   ```sh
+   npm run dev
+   ```
+
+### Sample Sequences
+
+The application comes with several pre-loaded sequences:
+- Insulin Signal Peptide
+- GFP Chromophore
+- Kozak Sequence
+
+## Usage
+
+1. Choose your input type (DNA or RNA)
+2. Enter a sequence or select a sample
+3. Choose reading frame and amino acid notation
+4. View the translated sequence and analysis
+
+## Project Structure
+
+```
+dna-translator/
+├── src/
+│   ├── components/
+│   │   └── DNATranslator.jsx
+│   ├── globals.css
+│   ├── App.jsx
+│   └── main.jsx
+├── index.html
+├── package.json
+├── postcss.config.js
+└── tailwind.config.js
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Development
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To contribute to this project:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## Learn More
+## License
 
-To learn more about Next.js, take a look at the following resources:
+Distributed under the MIT License. See `LICENSE` for more information.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
